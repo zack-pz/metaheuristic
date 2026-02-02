@@ -7,11 +7,9 @@ La validación experimental, realizada mediante simulación con vectores de recu
 ## Estructura del Proyecto
 
 - `main.py`: Punto de entrada principal para ejecutar la simulación como script de Python.
-- `simulation.ipynb`: Jupyter Notebook para experimentación e inspección interactiva.
 - `modules/`: Contiene la lógica del negocio.
   - `models.py`: Definiciones de `ResourceVector`, `Task` y `Server`.
   - `algorithms.py`: Implementación de FFD (First Fit Decreasing) y la fase de optimización metaheurística.
-- `requirements.txt`: Dependencias del proyecto.
 
 ## Requisitos
 
@@ -20,30 +18,28 @@ La validación experimental, realizada mediante simulación con vectores de recu
 
 ## Instalación y Configuración
 
-El proyecto utiliza un entorno virtual (`.venv`) y `uv` para la gestión de dependencias.
+### Opción 1: Usando uv (Recomendado)
+```bash
+uv venv
+source .venv/bin/activate
+```
 
-1. **Crear el entorno virtual e instalar dependencias:**
-   ```bash
-   uv venv
-   source .venv/bin/activate  # En Linux/macOS
-   # o
-   # .venv\Scripts\activate     # En Windows
-   uv pip install -r requirements.txt
-   ```
-
-2. **Instalar dependencias para Jupyter (si deseas usar el notebook):**
-   ```bash
-   uv pip install jupyterlab
-   ```
+### Opción 2: Usando venv y pip estándar
+Si no tienes `uv` instalado, puedes usar las herramientas nativas de Python:
+```bash
+python -m venv .venv
+source .venv/bin/activate  # En Linux/macOS
+# o
+.venv\Scripts\activate     # En Windows
+```
 
 ## Ejecución
 
 ### Como script de Python
-Ejecuta la simulación principal para ver los resultados en la terminal:
+Con el entorno virtual activado, ejecuta la simulación:
 ```bash
 python main.py
 ```
-
 
 ## Funcionamiento del Algoritmo
 

@@ -11,27 +11,21 @@ def main():
         cpu=80,      # 80% de uso seguro sobre 100%
         ram=64,      # 64 GB RAM
         iops=5000,   # IOPS
-        net_bw=10,   # 10 Gbps
-        gpu=0,       # Sin GPU por defecto en nodos generales
-        energy=1000  # Unidades térmicas arbitrarias
+        net_bw=10    # 10 Gbps
     )
     
     # 2. Generar Datos (30 tareas heterogéneas)
     random.seed(42)
     tasks = []
-    for i in range(30):
+    for i in range(100):
         # Generamos perfiles de carga variados:
         # Algunas tareas son CPU intensive, otras RAM intensive, etc.
         r_cpu = random.randint(5, 30)
         r_ram = random.randint(1, 16)
         r_iops = random.randint(100, 1000)
         r_net = random.randint(1, 3)
-        r_gpu = 1 if random.random() > 0.9 else 0 # 10% probabilidad de requerir GPU
         
-        # Las tareas GPU-bound suelen consumir mucha energía
-        r_energy = (r_cpu * 2) + (r_gpu * 100) 
-        
-        tasks.append(Task(i+1, ResourceVector(r_cpu, r_ram, r_iops, r_net, r_gpu, r_energy)))
+        tasks.append(Task(i+1, ResourceVector(r_cpu, r_ram, r_iops, r_net)))
     
     print(f"Total Tareas: {len(tasks)}")
     print(f"Capacidad por Servidor: {server_capacity_template}")

@@ -3,22 +3,18 @@ class ResourceVector:
     Representa un conjunto vectorial de recursos de hardware.
     Encapsula la lógica matemática para sumar, restar y comparar recursos multidimensionales.
     """
-    def __init__(self, cpu=0, ram=0, iops=0, net_bw=0, gpu=0, energy=0):
+    def __init__(self, cpu=0, ram=0, iops=0, net_bw=0):
         self.cpu = cpu          # Cores / %
         self.ram = ram          # GB
         self.iops = iops        # Operations/sec
         self.net_bw = net_bw    # Mbps/Gbps
-        self.gpu = gpu          # VRAM GB / Units
-        self.energy = energy    # Watts / Heat units
 
     def __add__(self, other):
         return ResourceVector(
             self.cpu + other.cpu,
             self.ram + other.ram,
             self.iops + other.iops,
-            self.net_bw + other.net_bw,
-            self.gpu + other.gpu,
-            self.energy + other.energy
+            self.net_bw + other.net_bw
         )
 
     def __sub__(self, other):
@@ -26,9 +22,7 @@ class ResourceVector:
             self.cpu - other.cpu,
             self.ram - other.ram,
             self.iops - other.iops,
-            self.net_bw - other.net_bw,
-            self.gpu - other.gpu,
-            self.energy - other.energy
+            self.net_bw - other.net_bw
         )
 
     def fits_in(self, other):
@@ -36,16 +30,11 @@ class ResourceVector:
         return (self.cpu <= other.cpu and
                 self.ram <= other.ram and
                 self.iops <= other.iops and
-                self.net_bw <= other.net_bw and
-                self.gpu <= other.gpu and
-                # Energy no suele ser un límite duro de capacidad del servidor, 
-                # sino una métrica acumulativa, pero lo trataremos como límite 
-                # térmico si se define en la capacidad del servidor.
-                self.energy <= other.energy)
+                self.net_bw <= other.net_bw)
 
     def __repr__(self):
         return (f"(CPU:{self.cpu}, RAM:{self.ram}, IO:{self.iops}, "
-                f"Net:{self.net_bw}, GPU:{self.gpu})")
+                f"Net:{self.net_bw})")
 
 class Task:
     """

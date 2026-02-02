@@ -1,4 +1,4 @@
-# FinOps Cloud Optimizer (Multidimensional)
+# Optimización Metaheurística de Recursos en la Nube (Multidimensional)
 
 Este proyecto presenta una prueba de concepto enfocada en la optimización de la gestión de recursos computacionales para entornos de nube y logística, abordando el problema como un Empaquetado de Contenedores Dinámico en Línea Multidimensional (ODMBP). Dado que las heurísticas deterministas tradicionales (como First-Fit) suelen provocar fragmentación de recursos y subutilización energética, se propone una estrategia híbrida que combina una fase constructiva inicial mediante First Fit Decreasing (FFD) con una fase de refinamiento basada en metaheurísticas de trayectoria y búsqueda local.
 
